@@ -43,7 +43,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style >
 .home{
   width: 100%
 }
@@ -85,7 +85,7 @@ button{
   }
 } */
 
-@media(max-width: 1080px){
+@media(max-width: 1016px){
   .container{
     grid-template-columns: 49% 49% !important
   }
@@ -97,5 +97,6 @@ button{
     grid-template-columns: 100% !important
   }
 }
+
 </style>
 
