@@ -1,11 +1,9 @@
-<template>
-  <div id="app">
-    <div id="nav">
+<template lang='pug'>
+  #app
+    #nav
       <router-link to="/">Home</router-link> |
       <router-link to="/favourites">Favourites</router-link>
-    </div>
-    <router-view/>
-  </div>
+    router-view
 </template>
 
 <style>
