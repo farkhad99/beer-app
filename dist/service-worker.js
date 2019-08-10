@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.0a6ecadb7342421b83db539a573617ee.js"
+  "/precache-manifest.407d61d4a2a9d2ec6e5e59d1cd590ac7.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "beerapp"});
