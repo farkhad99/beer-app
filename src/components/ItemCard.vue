@@ -1,6 +1,6 @@
 <template lang="pug">
   div.card 
-    div.star_container(@click="addToFavs()", v-if="showBtn")  
+    div.star_container(@click="addToFavs()")  
       img.star_icon(src='../assets/black_star.png' v-if="!added")
       img.star_icon(src='../assets/bright_star.png', v-else)
     div

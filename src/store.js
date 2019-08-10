@@ -39,6 +39,7 @@ export default new Vuex.Store({
     },
     getFavourites: async (ctx) => {
       try{
+        console.log('hey')
         let favs      = JSON.parse(localStorage.getItem('favourites'))
         let query_ids = favs.join('|')
         let res       = await axios.get(ctx.state.url+'?ids='+query_ids)
@@ -50,12 +51,16 @@ export default new Vuex.Store({
       if(!favs) favs = []       
       favs.push(item)
       localStorage.setItem('favourites',JSON.stringify(favs))      
+      ctx.dispatch('getFavourites')
     },
-    RemoveFormFavs: (ctx, item) => {
+    deleteFromFavs: (ctx, id) => {
       let favs = JSON.parse(localStorage.getItem('favourites'))
       if(!favs) favs = []       
-      favs.map()
-      localStorage.setItem('favourites',JSON.stringify(favs))      
+      favs.map((item, index) => {
+        if(item == id) favs.splice(index, 1); return
+      })
+      localStorage.setItem('favourites',JSON.stringify(favs))
+      ctx.dispatch('getFavourites')
     }
   }
 })
