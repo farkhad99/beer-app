@@ -7,17 +7,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     beers: [],
-    favourites: [],
+    beer: {},
     favourites: [],
     url: 'https://api.punkapi.com/v2/beers'
   },
   getters: {
+    beer: (state) => state.beer[0],
     beers: (state) => state.beers,
     favourites: (state) => state.favourites
   },
   mutations: {
     SET_BEERS: (state, payload) => {
       state.beers = payload
+    },  
+    SET_BEER: (state, payload) => {
+      state.beer = payload
     },  
     SET_FAVS: (state, payload) => {
       state.favourites = payload
@@ -30,6 +34,12 @@ export default new Vuex.Store({
         ctx.commit('SET_BEERS', response.data)
       } catch (err) {throw err}
     },
+    getBeer: async (ctx,id) => {
+      try{
+        let response  = await axios.get(ctx.state.url+'/'+id)
+        ctx.commit('SET_BEER', response.data)
+      } catch (err) {throw err}
+    },
     searchBeers: async (ctx, beer_name) => {
       try {
         if(beer_name == '') return;
@@ -39,7 +49,6 @@ export default new Vuex.Store({
     },
     getFavourites: async (ctx) => {
       try{
-        console.log('hey')
         let favs      = JSON.parse(localStorage.getItem('favourites'))
         let query_ids = favs.join('|')
         let res       = await axios.get(ctx.state.url+'?ids='+query_ids)

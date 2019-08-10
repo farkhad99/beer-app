@@ -6,7 +6,7 @@
     h1(v-if="loading") Loading...
     div.container(v-else-if="beers.length")
       div(class='grid-item', v-for="(beer) in beers", :key="beer.id")
-        ItemCard(:name='beer.name', :desc='beer.description', :showBtn='true' :image="beer.image_url", :id="beer.id")
+        ItemCard(:name='beer.name', :desc='beer.description', :image="beer.image_url", :id="beer.id")
     h1(v-else) No such beer     
 </template>
 <script>

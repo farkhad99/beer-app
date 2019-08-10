@@ -7,7 +7,8 @@
       .img
         .image(v-bind:style="{ backgroundImage: 'url(' + image + ')' }") 
       .text
-        h4 {{name}}
+        h4
+          router-link(tag='h4', :to="'/beer/'+id") {{name}}
         div.desc {{desc.substring(0,160)}}...
 </template>
 
@@ -52,6 +53,7 @@ export default {
   h4 {
     text-align: left;
     max-height: 40px;
+    cursor: pointer
   } 
   .desc{
     text-align:left!important;
