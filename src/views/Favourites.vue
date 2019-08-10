@@ -1,5 +1,6 @@
 <template lang="pug">
-  .home
+  .home 
+    h1 Your favourites
     div.container
       span(v-for="(beer) in favourites", :key="beer.id")
         ItemCard(:name='beer.name', :desc='beer.description', :image="beer.image_url", :id="beer.id")

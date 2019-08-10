@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { stat } from 'fs';
 
 Vue.use(Vuex)
 
@@ -24,13 +25,14 @@ export default new Vuex.Store({
   },
   actions: {
     getBeers: async (ctx) => {
-      try{ 
-        let response  = await axios.get(ctx.state.url+'/random')
+      try{
+        let response  = await axios.get(ctx.state.url)
         ctx.commit('SET_BEERS', response.data)
       } catch (err) {throw err}
     },
     searchBeers: async (ctx, beer_name) => {
       try {
+        if(beer_name == '') return;
         let response  = await axios.get(ctx.state.url+'?beer_name='+beer_name)
         console.log(response)
         ctx.commit('SET_BEERS', response.data)

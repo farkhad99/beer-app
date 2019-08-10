@@ -1,14 +1,18 @@
 <template lang="pug">
-  .card 
-    h2 {{name}} {{id}}
-    div.image(v-bind:style="{ backgroundImage: 'url(' + image + ')' }") 
-    p.desc {{desc}}
-    button(@click="addToFavs()", v-if="showBtn") Add ++
+  div.card 
+    div.star_container(@click="addToFavs()", v-if="showBtn")  
+      img.star_icon(src='../assets/black_star.png')
+    div
+      div.img
+        div.image(v-bind:style="{ backgroundImage: 'url(' + image + ')' }") 
+      div.text
+        h4 {{name}}
+        div.desc {{desc.substring(0,160)}}...
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ItemCard',
   props: {
     id: Number,
     showBtn: Boolean,
@@ -24,25 +28,47 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .text{
+    display: inline-block;
+    width:50%;
+    height: 100%;
+  }
+  .img{
+    width:35%;
+    padding-top:-30px;
+  }
+  h4 {
+    text-align: left;
+    max-height: 40px;
+  } 
+  .desc{
+    text-align:left!important;
+    /* width:70%; */
+  }
+  .star_icon{
+    float:right;
+    width: 20px;
+    height:20px;
+    cursor: pointer;
+  }
   .card{
-    width: 100%;
-    padding:10px
+    border-radius: 4px;
+    padding:10px;
+    min-width: 250px;
+    max-width: 475px;
+    min-height: 220px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   } 
   .image{ 
     float:left;
-    width:100px;
-    height:100px;
+    width:100%;
+    margin: 0 auto;
+    min-height:140px;
+    margin-top: 20px!important;
+    /* margin-left: -20px!important; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
   }
-  .desc{
-    text-align: left
-  }
-  /* .icon{ 
-    width: 100px;
-    height: 200px;
-  } */
 </style>

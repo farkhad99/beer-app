@@ -1,12 +1,18 @@
 <template lang='pug'>
   #app
     #nav
-      <router-link to="/">Home</router-link> |
-      <router-link to="/favourites">Favourites</router-link>
+      .logo 
+        a(href="/") BEANS LOVE BEERS
+      .links 
+        router-link(to="/") Home 
+        router-link(to="/favourites") Favourites
     router-view
 </template>
 
 <style>
+body{
+  margin: 0px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,14 +21,27 @@
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  width: 100%;
+  color: white;
+  height: 60px;
+  background-color: rgb(74, 214, 214);
+  margin-bottom: 30px;
 }
-
+.links {
+  float: right;
+  margin: 20px;
+}
 #nav a {
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
+  margin-left:20px;
+  color:white;
+  cursor: pointer
 }
-
+.logo{
+  margin: 20px;
+  float:left;
+}
 #nav a.router-link-exact-active {
   color: #95a59e;
 }
