@@ -1,11 +1,12 @@
 <template lang="pug">
   div.card 
     div.star_container(@click="addToFavs()", v-if="showBtn")  
-      img.star_icon(src='../assets/black_star.png')
+      img.star_icon(src='../assets/black_star.png' v-if="!added")
+      img.star_icon(src='../assets/bright_star.png', v-else)
     div
-      div.img
-        div.image(v-bind:style="{ backgroundImage: 'url(' + image + ')' }") 
-      div.text
+      .img
+        .image(v-bind:style="{ backgroundImage: 'url(' + image + ')' }") 
+      .text
         h4 {{name}}
         div.desc {{desc.substring(0,160)}}...
 </template>
@@ -20,9 +21,19 @@ export default {
     image: String,
     desc: String
   },
+  computed: {
+    added(){
+      let res = false
+      this.$store.getters.favourites.map(item => {
+        if(item.id == this.id) res = true 
+      })
+      return res
+    }      
+  },
   methods: {
     addToFavs(){
-      this.$store.dispatch('addToFavourites', this.id)
+      if(this.added) this.$store.dispatch('deleteFromFavs', this.id)  
+      else this.$store.dispatch('addToFavourites', this.id)
     }
   }
 }
@@ -44,7 +55,6 @@ export default {
   } 
   .desc{
     text-align:left!important;
-    /* width:70%; */
   }
   .star_icon{
     float:right;
@@ -66,7 +76,6 @@ export default {
     margin: 0 auto;
     min-height:140px;
     margin-top: 20px!important;
-    /* margin-left: -20px!important; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

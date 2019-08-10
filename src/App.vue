@@ -45,7 +45,6 @@ body{
 #nav a.router-link-exact-active {
   color: #95a59e;
 }
-
 @media(max-width: 460px){
   #nav{
     font-size: 14px!important;

@@ -1,8 +1,8 @@
-<template lang="pug">
+ <template lang="pug">
   .home 
     h1 Your favourites
     div.container
-      div(v-for="(beer) in favourites", :key="beer.id")
+      div(v-for="(beer) in favourites", :key="beer.id", class='grid-item')
         ItemCard(:name='beer.name', :desc='beer.description', :image="beer.image_url", :id="beer.id")
 </template>
 <script>
@@ -23,6 +23,5 @@ export default {
 </script>
 
 <style>
-
+@import '../assets/media-grid.css';
 </style>
-

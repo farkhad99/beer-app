@@ -39,11 +39,14 @@ export default {
     }
   },
   mounted(){
+    this.$store.dispatch('getFavourites')
     this.getBeers()
   }
 }
 </script>
 <style >
+@import '../assets/media-grid.css';
+
 .home{
   width: 100%
 }
@@ -64,39 +67,5 @@ button{
   height: 40px;
   cursor: pointer
 }
-.container {
-  display: grid;
-  grid-template-columns: 32% 32% 32%;
-  margin: 0 auto;
-  padding: 30px;
-  grid-column-gap: 2%;
-  grid-row-gap: 30px;
-}
-
-.grid-item{
-  margin: 0 auto;
-}
-
-/* 
-@media(min-width: 1080px){
-  .container{
-    grid-template-columns: 24% 24% 24% 24%!important;
-    grid-column-gap: 1%;
-  }
-} */
-
-@media(max-width: 1016px){
-  .container{
-    grid-template-columns: 49% 49% !important
-  }
-}
-
-@media(max-width: 750px){
-  .container{
-    padding:10px;
-    grid-template-columns: 100% !important
-  }
-}
-
 </style>
 
