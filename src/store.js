@@ -50,6 +50,7 @@ export default new Vuex.Store({
     getFavourites: async (ctx) => {
       try{
         let favs      = JSON.parse(localStorage.getItem('favourites'))
+        if(!favs) return
         let query_ids = favs.join('|')
         let res       = await axios.get(ctx.state.url+'?ids='+query_ids)
         ctx.commit('SET_FAVS', res.data)
