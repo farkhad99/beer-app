@@ -52,7 +52,7 @@ export default {
 }
 input {
   width: 50%;
-  min-width: 240px;
+  min-width: 200px;
   max-width: 600px;
   border: 1px solid rgb(176, 185, 202);
   border-radius: 4px;
@@ -65,7 +65,8 @@ button{
   border-radius: 4px;
   border: 1px solid gainsboro;
   height: 40px;
-  cursor: pointer
+  cursor: pointer;
+  width: 80px;
 }
 </style>
 
