@@ -6,7 +6,6 @@
             h3 {{beer.tagline}}
             p {{beer.description}} 
             |{{beer.brewers_tips}}
-        //- | {{beer}}
         br
         br
 </template>
