@@ -1,3 +1,4 @@
+demo - http://farkhad-beer-app.herokuapp.com
 # beerapp
 
 ## Project setup
